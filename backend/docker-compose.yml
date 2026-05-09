@@ -1,0 +1,68 @@
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    ports: ["3306:3306"]
+    environment:
+      MYSQL_ROOT_PASSWORD: Mayorman
+      MYSQL_DATABASE: hrms_db
+      MYSQL_USER: hrms_user
+      MYSQL_PASSWORD: hrms_pass
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports: ["5672:5672", "15672:15672"]
+    environment:
+      RABBITMQ_DEFAULT_USER: Ems_Mayorman
+      RABBITMQ_DEFAULT_PASS: Ems_guest
+      RABBITMQ_DEFAULT_VHOST: hrms_vhost
+
+  service-discovery:
+    build:
+      context: .
+      dockerfile: services/service-discovery/Dockerfile
+    ports: ["9010:8761"]
+
+  config-server:
+    build:
+      context: .
+      dockerfile: services/config-server/Dockerfile
+    ports: ["9012:8888"]
+    depends_on: [service-discovery]
+
+  gateway-service:
+    build:
+      context: .
+      dockerfile: services/api-gateway/Dockerfile
+    ports: ["9082:8080"]
+    depends_on: [service-discovery, config-server]
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: services/auth-service/Dockerfile
+    ports: ["9001:8081"]
+
+  employee-service:
+    build:
+      context: .
+      dockerfile: services/employee-service/Dockerfile
+    ports: ["9002:8082"]
+
+  department-service:
+    build:
+      context: .
+      dockerfile: services/department-service/Dockerfile
+    ports: ["9003:8083"]
+
+  payroll-service:
+    build:
+      context: .
+      dockerfile: services/payroll-service/Dockerfile
+    ports: ["9004:8084"]
+
+  leave-attendance-service:
+    build:
+      context: .
+      dockerfile: services/leave-attendance-service/Dockerfile
+    ports: ["9005:8085"]

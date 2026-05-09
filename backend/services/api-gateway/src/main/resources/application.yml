@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      uri: http://config-server:8888
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
+  cloud:
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - http://localhost:5173
+              - http://127.0.0.1:5173
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - PATCH
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - '*'
+            allowCredentials: true
+      routes:
+        - id: auth-service
+          uri: http://auth-service:8081
+          predicates:
+            - Path=/api/auth/**
+        - id: employee-service
+          uri: http://employee-service:8082
+          predicates:
+            - Path=/api/employees/**
+        - id: department-service
+          uri: http://department-service:8083
+          predicates:
+            - Path=/api/departments/**
+        - id: payroll-service
+          uri: http://payroll-service:8084
+          predicates:
+            - Path=/api/payroll/**
+        - id: leave-service
+          uri: http://leave-attendance-service:8085
+          predicates:
+            - Path=/api/leaves/**
+        - id: attendance-service
+          uri: http://leave-attendance-service:8085
+          predicates:
+            - Path=/api/attendance/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://service-discovery:8761/eureka
+server:
+  port: 8080
