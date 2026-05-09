@@ -63,14 +63,7 @@ That starts:
 
 ## Documentation
 
-- `docs/PROJECT_PROPOSAL.md`
-- `docs/SRS.md`
-- `docs/architecture.md`
-- `docs/diagrams.md`
-- `docs/OCL.md`
-- `docs/DESIGN_PATTERNS.md`
-- `docs/CLEAN_CODE.md`
-- `docs/SUBMISSION_CHECKLIST.md`
+- `docs/HRMS_DOC.pdf`
 
 ## Software Engineering 2 Requirements Map
 
@@ -88,18 +81,12 @@ This section shows where each guideline is covered in the repository.
 | Microservices and Spring Cloud | `backend/pom.xml`, `backend/docker-compose.yml`, and the `service-discovery`, `api-gateway`, and `config-server` modules |
 | Database | JPA entities and repository layers under each service, plus the database config in each service `application.properties` |
 | Registration and authentication | `backend/services/auth-service/src/main/java/com/hrms/authservice/controller/AuthController.java` and related auth service classes |
-| SRS document | `docs/SRS.md` |
-| Use case diagram | `docs/diagrams.md` |
-| Class diagram | `docs/diagrams.md` |
-| Sequence diagram | `docs/diagrams.md` |
-| Activity diagram | `docs/diagrams.md` |
-| ERD | `docs/diagrams.md` |
-| OCL | `docs/OCL.md` |
-| Design pattern evidence | `docs/DESIGN_PATTERNS.md` |
-| Clean code evidence | `docs/CLEAN_CODE.md` |
-
-## Submission Notes
-
-- Team size is not enforced by the codebase, so put the actual 6 to 7 member names in your cover page or final report.
-- If your instructor wants a live demo, start with Docker Compose from `backend/` and show the login flow from `client/`.
-"# Human-resource-Managment-System" 
+| SRS document | `docs/HRMS_DOC.pdf` |
+| Use case diagram | `docs/HRMS_DOC.pdf` |
+| Class diagram | `docs/HRMS_DOC.pdf` |
+| Sequence diagram | `docs/HRMS_DOC.pdf` |
+| Activity diagram | `docs/HRMS_DOC.pdf` |
+| ERD | `docs/HRMS_DOC.pdf` |
+| OCL | `docs/HRMS_DOC.pdf` |
+| Design pattern evidence | `docs/HRMS_DOC.pdf`` |
+| Clean code evidence | `docs/HRMS_DOC.pdf`` |
